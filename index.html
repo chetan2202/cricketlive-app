@@ -12,9 +12,9 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
     <title>CricketLive</title>
-    <script type="module" crossorigin src="./assets/index-DSLW02lf.js"></script>
+    <script type="module" crossorigin src="./assets/index-DQknc1Dj.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/three-wt9HL9Ib.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-Bc0rXVbi.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CP7XBffl.css">
   <link rel="manifest" href="./manifest.webmanifest"></head>
   <body>
     <canvas id="game"></canvas>
@@ -67,7 +67,7 @@
           <div class="meter-fill" id="meter-fill"></div>
           <div class="meter-mark" id="meter-mark"></div>
         </div>
-        <div class="bp-bowler" id="bp-bowler"></div>
+        <div class="bp-bowler-row"><span class="bp-bowler" id="bp-bowler"></span><button class="bp-change hidden" id="bp-change">Change bowler</button></div>
       </div>
 
       <div class="banner" id="banner"></div>
@@ -150,6 +150,7 @@
           <div>
             <h3>Batting</h3>
             <table>
+              <tr><td>Before the ball</td><td>Left / right moves you across the crease; up during the run-up steps down the pitch (miss it and you can be stumped)</td></tr>
               <tr><td>Arrows / WASD</td><td>Direction of the shot (down = straight past the bowler, left = off side, right = leg side, up = behind)</td></tr>
               <tr><td>Space</td><td>Ground shot, just before the ball reaches you (no direction = defensive block)</td></tr>
               <tr><td>E or Shift+Space</td><td>Lofted shot (big hit, can be caught)</td></tr>
@@ -160,6 +161,7 @@
           <div>
             <h3>Bowling</h3>
             <table>
+              <tr><td>C</td><td>Change the bowler (before the first ball of an over)</td></tr>
               <tr><td>Q / E</td><td>Change the delivery (swing, yorker, bouncer, slower, spin variations)</td></tr>
               <tr><td>Arrows / WASD</td><td>Move the yellow marker: where the ball pitches</td></tr>
               <tr><td>Space</td><td>Start the run-up</td></tr>
@@ -169,7 +171,7 @@
           <div>
             <h3>Rules</h3>
             <table>
-              <tr><td>Out</td><td>Bowled, caught (including edges to the keeper and slips) and run out. No LBW in this version.</td></tr>
+              <tr><td>Out</td><td>Bowled, caught (including edges to the keeper and slips), run out and stumped. No LBW in this version.</td></tr>
               <tr><td>Extras</td><td>Wides and no-balls give a run and are bowled again. A no-ball gives a free hit.</td></tr>
               <tr><td>Match</td><td>Both teams bat for the chosen overs (10 wickets). Highest score wins.</td></tr>
             </table>
