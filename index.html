@@ -12,9 +12,9 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
     <title>CricketLive</title>
-    <script type="module" crossorigin src="./assets/index-txpLWZ0-.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/three-C-Mv2d8S.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-CuR0C71B.css">
+    <script type="module" crossorigin src="./assets/index-Z8h4Tg1P.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/three-v6x2lC9I.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-mNClI9BY.css">
   <link rel="manifest" href="./manifest.webmanifest"></head>
   <body>
     <canvas id="game"></canvas>
@@ -36,7 +36,14 @@
         <div class="sbg-over" id="sbg-over"></div>
       </div>
 
+      <div class="hold-hint" id="hold-hint">Hold to exit</div>
+
       <div class="hud-buttons">
+        <!-- Exit: only a long press closes the game, so a stray tap never ends a match. -->
+        <button class="icon-btn hold-btn" id="btn-exit" aria-label="Exit (hold)" title="Hold to exit">
+          <span class="hold-fill"></span>
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
         <button class="icon-btn" id="btn-pause" aria-label="Pause (P)" title="Pause (P)">
           <svg viewBox="0 0 24 24"><path d="M7 5h3v14H7zM14 5h3v14h-3z" /></svg>
         </button>
@@ -152,10 +159,10 @@
             <table>
               <tr><td>Before the ball</td><td>Left / right moves you across the crease; up during the run-up steps down the pitch (miss it and you can be stumped)</td></tr>
               <tr><td>Arrows / WASD</td><td>Direction of the shot (down = straight past the bowler, left = off side, right = leg side, up = behind)</td></tr>
-              <tr><td>Space</td><td>Ground shot, just before the ball reaches you (no direction = defensive block)</td></tr>
+              <tr><td>Space</td><td>Drive along the ground, just before the ball reaches you (no direction = where the ball wants to go)</td></tr>
               <tr><td>E or Shift+Space</td><td>Lofted shot (big hit, can be caught)</td></tr>
               <tr><td>R</td><td>Run (press again for another)</td></tr>
-              <tr><td>B</td><td>Go back (first half of a run)</td></tr>
+              <tr><td>B</td><td>Before the ball reaches you: defensive block. During a run: go back (first half of a run)</td></tr>
             </table>
           </div>
           <div>
@@ -174,6 +181,7 @@
               <tr><td>Out</td><td>Bowled, caught (including edges to the keeper and slips), run out and stumped. No LBW in this version.</td></tr>
               <tr><td>Extras</td><td>Wides and no-balls give a run and are bowled again. A no-ball gives a free hit.</td></tr>
               <tr><td>Match</td><td>Both teams bat for the chosen overs (10 wickets). Highest score wins.</td></tr>
+              <tr><td>Exit</td><td>Hold the &times; button at the top (or hold Esc) to close the game and free its memory. Main menu in the pause menu goes back to the menu.</td></tr>
             </table>
           </div>
         </div>
@@ -214,7 +222,16 @@
     </div>
 
     <div id="rotate" class="hidden"><div>Turn your phone sideways for the best view<button class="link" id="btn-rotate-ok">Play anyway</button></div></div>
-    <div id="toast" class="toast hidden"></div>
+    <!-- Shown after the exit hold, when the browser does not let the page close its own window. -->
+    <div id="closed" class="overlay hidden">
+      <div class="panel small-panel">
+        <h2>CricketLive closed</h2>
+        <p class="closed-note">The game has stopped and freed its memory. You can close this tab or app now.</p>
+        <button class="cta" id="btn-reopen">Open again</button>
+      </div>
+    </div>
 
+    <div id="toast" class="toast hidden"></div>
+
   </body>
 </html>
